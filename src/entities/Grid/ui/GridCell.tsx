@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import { GridCellOccupation } from '../models/Grid';
+import React from 'react';
+import { GridCellOccupation } from '../store';
 
 interface GridCellProps {
-    initialOccupation: GridCellOccupation;
+    occupation: GridCellOccupation;
     onOccupationChange: (newOccupation: GridCellOccupation) => void;
 }
 
-const GridCell: React.FC<GridCellProps> = ({ initialOccupation, onOccupationChange }) => {
-    const [occupation, setOccupation] = useState(initialOccupation);
+const GridCell: React.FC<GridCellProps> = ({ occupation, onOccupationChange }) => {
 
     const handleClick = () => {
         const newOccupation = occupation === GridCellOccupation.EMPTY ? GridCellOccupation.PLAYER : GridCellOccupation.EMPTY;
-        setOccupation(newOccupation);
         onOccupationChange(newOccupation);
     };
 
@@ -29,4 +27,4 @@ const GridCell: React.FC<GridCellProps> = ({ initialOccupation, onOccupationChan
     );
 };
 
-export default GridCell;
+export default React.memo(GridCell, (prevProps, nextProps) => prevProps.occupation === nextProps.occupation);
