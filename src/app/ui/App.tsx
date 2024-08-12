@@ -1,6 +1,7 @@
 
 import { Terminal } from 'lucide-react';
 import './styles.global.css';
+import React from 'react';
 import { Alert, AlertTitle, AlertDescription } from '~shared/components/ui/alert';
 
 export function App() {
@@ -14,6 +15,7 @@ export function App() {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem voluptate aut beatae consectetur voluptatibus? Molestias, consequatur corrupti. Fuga ducimus repellendus reprehenderit porro quaerat ab quas deleniti, nulla, aut fugiat sequi.
           </AlertDescription>
         </Alert>
+        
       </div>
     </div>
   );
