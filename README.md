@@ -7,7 +7,8 @@ This project aims to recreate a game called "Dots" that I used to play in school
 ## Project Goals:
 1. Create an application that can maintain its own synchronized state between clients without a server.
 2. Understand the pros and cons of this approach.
-3. Play Dots with friends through my own super-duper-mega application :)
+3. Experiment with Feature-Sliced Design.
+4. Play Dots with friends through my own super-duper-mega application :)
 
 
 ## Roadmap:
