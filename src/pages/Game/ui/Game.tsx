@@ -1,4 +1,4 @@
-import GridComponent from "~entities/Grid/ui/GridComponent";
+import Grid from "~entities/Grid/ui/Grid";
 
 export function Game() {
     
@@ -11,7 +11,7 @@ export function Game() {
                     <div
                         className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1"
                     >
-                        <GridComponent size={20} />
+                        <Grid size={20} />
                     </div>
                 </main>
             </div>

@@ -6,7 +6,7 @@ interface GridProps {
     size: number;
 }
 
-const GridComponent: React.FC<GridProps> = ({ size }) => {
+const Grid: React.FC<GridProps> = ({ size }) => {
     const {grid, setCellOccupation} = useGrid({size: 20});
 
     const handleOccupationChange = (x: number, y: number, newOccupation: GridCellOccupation) => {
@@ -30,4 +30,4 @@ const GridComponent: React.FC<GridProps> = ({ size }) => {
     );
 };
 
-export default GridComponent;
+export default Grid;
