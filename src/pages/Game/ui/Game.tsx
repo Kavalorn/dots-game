@@ -1,10 +1,16 @@
+import useCursor from "~entities/Cursor/hooks/useCursor";
+import Cursor, { TeamColorEnum } from "~entities/Cursor/ui/Cursor";
 import Grid from "~entities/Grid/ui/Grid";
 import { PeerDebug } from "~entities/Peer/ui/PeerDebug";
 
 export function Game() {
+    const { cursors } = useCursor();
     
     return (
         <div className="grid min-h-screen w-full">
+            {Object.entries(cursors).map(([id, { x, y, isSelf }]) => (
+                <Cursor key={id} id={id} x={x} y={y} isSelf={isSelf} team={TeamColorEnum.BLUE} />
+            ))}
             <PeerDebug />
             <div className="flex flex-col">
                 <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
