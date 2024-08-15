@@ -1,6 +1,8 @@
 import React from 'react';
 import GridCell from './GridCell';
-import { GridCellOccupation, useGrid } from '../store';
+import { GridCellOccupation } from '../store';
+import { useGrid } from '../hooks/useGrid';
+
 
 interface GridProps {
     size: number;

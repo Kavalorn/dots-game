@@ -35,17 +35,3 @@ export const useGridStore = create<GridStore>()(immer((set) => ({
         });
     }
 })));
-
-interface useGridParams {
-    size: number;
-}
-
-export const useGrid = ({size}: useGridParams) => {
-    const {grid, generateGrid, setCellOccupation} = useGridStore();
-
-    useEffect(() => {
-        generateGrid({size});
-    }, [generateGrid, size]);
-
-    return {grid, setCellOccupation}
-}
