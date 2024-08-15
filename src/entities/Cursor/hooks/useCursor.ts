@@ -12,11 +12,12 @@ const useCursor = () => {
       const [sendMove, getMove] = room.makeAction<[number, number]>('mouseMove');
       setSendMove(() => sendMove);
 
-      room.onPeerJoin(id => addCursor(id, false, team)); // Pass team info
+      room.onPeerJoin(id => {
+        if (selfId === id) return;
+        addCursor(id, team)
+      });
       room.onPeerLeave(removeCursor);
       getMove(([x, y], id) => moveCursor(id, x * window.innerWidth, y * window.innerHeight));
-
-      addCursor(selfId, true, team); // Pass team info
     };
 
     init();
@@ -24,7 +25,6 @@ const useCursor = () => {
     const handleMouseMove = ({ clientX, clientY }: MouseEvent) => {
       const mouseX = clientX / window.innerWidth;
       const mouseY = clientY / window.innerHeight;
-      moveCursor(selfId, mouseX * window.innerWidth, mouseY * window.innerHeight);
       if (room && sendMove) {
         sendMove([mouseX, mouseY]);
       }

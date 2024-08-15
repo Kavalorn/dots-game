@@ -4,22 +4,21 @@ import { TeamColorEnum } from '../ui/Cursor';
 interface Cursor {
   x: number;
   y: number;
-  isSelf: boolean;
 }
 
 interface CursorState {
   cursors: { [key: string]: Cursor };
-  addCursor: (id: string, isSelf: boolean, team: TeamColorEnum) => void;
+  addCursor: (id: string, team: TeamColorEnum) => void;
   removeCursor: (id: string) => void;
   moveCursor: (id: string, x: number, y: number) => void;
 }
 
 const useCursorStore = create<CursorState>((set) => ({
   cursors: {},
-  addCursor: (id, isSelf, team) => set((state) => ({
+  addCursor: (id, team) => set((state) => ({
     cursors: {
       ...state.cursors,
-      [id]: { x: -99, y: -99, isSelf, team}
+      [id]: { x: -99, y: -99, team}
     }
   })),
   removeCursor: (id) => set((state) => {
@@ -30,7 +29,7 @@ const useCursorStore = create<CursorState>((set) => ({
   moveCursor: (id, x, y) => set((state) => ({
     cursors: {
       ...state.cursors,
-      [id]: { x, y, isSelf: state.cursors[id]?.isSelf || false }
+      [id]: { x, y }
     }
   }))
 }));

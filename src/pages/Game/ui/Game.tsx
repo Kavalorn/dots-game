@@ -8,8 +8,8 @@ export function Game() {
     
     return (
         <div className="grid min-h-screen w-full">
-            {Object.entries(cursors).map(([id, { x, y, isSelf }]) => (
-                <Cursor key={id} id={id} x={x} y={y} isSelf={isSelf} team={TeamColorEnum.BLUE} />
+            {Object.entries(cursors).map(([id, { x, y }]) => (
+                <Cursor key={id} id={id} x={x} y={y} team={TeamColorEnum.BLUE} />
             ))}
             <PeerDebug />
             <div className="flex flex-col">

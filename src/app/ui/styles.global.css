@@ -85,7 +85,3 @@ iframe
 {
     display: none;
 }
-
-body {
-  cursor: url('/public/images/cursor-red.svg'), auto;
-}
