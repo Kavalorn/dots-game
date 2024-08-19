@@ -3,7 +3,7 @@ import { usePeer } from '~entities/Peer';
 import useCursorStore from '../store/store';
 
 const useCursor = () => {
-  const { room, selfId, team } = usePeer();
+  const { room, selfId } = usePeer();
   const { cursors, addCursor, removeCursor, moveCursor } = useCursorStore();
   const [sendMove, setSendMove] = useState<((payload: [number, number]) => void) | null>(null);
 
@@ -14,7 +14,7 @@ const useCursor = () => {
 
       room.onPeerJoin(id => {
         if (selfId === id) return;
-        addCursor(id, team)
+        addCursor(id);
       });
       room.onPeerLeave(removeCursor);
       getMove(([x, y], id) => moveCursor(id, x * window.innerWidth, y * window.innerHeight));
@@ -35,7 +35,7 @@ const useCursor = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [room, selfId, sendMove, addCursor, moveCursor, removeCursor, team]);
+  }, [room, selfId, sendMove, addCursor, moveCursor, removeCursor]);
 
   return { cursors };
 };

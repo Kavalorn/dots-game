@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { TeamColorEnum } from '../ui/Cursor';
 
 interface Cursor {
   x: number;
@@ -8,17 +7,17 @@ interface Cursor {
 
 interface CursorState {
   cursors: { [key: string]: Cursor };
-  addCursor: (id: string, team: TeamColorEnum) => void;
+  addCursor: (id: string) => void;
   removeCursor: (id: string) => void;
   moveCursor: (id: string, x: number, y: number) => void;
 }
 
 const useCursorStore = create<CursorState>((set) => ({
   cursors: {},
-  addCursor: (id, team) => set((state) => ({
+  addCursor: (id) => set((state) => ({
     cursors: {
       ...state.cursors,
-      [id]: { x: -99, y: -99, team}
+      [id]: { x: -99, y: -99}
     }
   })),
   removeCursor: (id) => set((state) => {

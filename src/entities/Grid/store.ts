@@ -1,14 +1,13 @@
-import { useEffect } from "react";
 import { create } from "zustand";
 import {immer} from 'zustand/middleware/immer'
 
 export enum GridCellOccupation {
     PLAYER,
-    ENEMY,
+    OPPONENT,
     EMPTY
 }
 
-type GridCell = {
+export type GridCell = {
     occupiedBy: GridCellOccupation;
 }
 
@@ -20,6 +19,7 @@ type GridStore = {
     grid: GridCell[][];
     generateGrid: (params: GridParameters) => void;
     setCellOccupation: (x: number, y: number, newOccupation: GridCellOccupation) => void;
+    setGrid: (newGrid: GridCell[][]) => void;
 }
 
 export const useGridStore = create<GridStore>()(immer((set) => ({
@@ -33,5 +33,8 @@ export const useGridStore = create<GridStore>()(immer((set) => ({
         set(state => {
             state.grid[x][y].occupiedBy = newOccupation;
         });
-    }
+    },
+    setGrid: (newGrid: GridCell[][]) => set(state => { 
+        state.grid = newGrid 
+    })
 })));

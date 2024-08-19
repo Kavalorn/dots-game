@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useGridStore } from "../store";
 
 interface useGridParams {
@@ -6,11 +6,12 @@ interface useGridParams {
 }
 
 export const useGrid = ({size}: useGridParams) => {
-    const {grid, generateGrid, setCellOccupation} = useGridStore();
+    const gridStore = useGridStore();
+    const {generateGrid} = gridStore;
 
     useEffect(() => {
         generateGrid({size});
     }, [generateGrid, size]);
 
-    return {grid, setCellOccupation}
+    return gridStore;
 }

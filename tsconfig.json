@@ -27,7 +27,7 @@
       "~pages/*": ["./src/pages/*"],
       "~shared/*": ["./src/shared/*"],
       "~utils/*": ["./src/utils/*"],
-      "~widgets/*": ["./src/widget/*"]
+      "~widgets/*": ["./src/widgets/*"]
     }
   },
   "include": [

@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { joinRoom, Room, selfId } from 'trystero/torrent';
 import { config } from '~app/config';
-import { TeamColorEnum } from '~entities/Cursor/ui/Cursor';
 
 export interface Cursor {
   x: number;
@@ -12,9 +11,7 @@ export interface Cursor {
 
 export interface PeerStore {
   room: Room;
-  team: TeamColorEnum;
   selfId: string;
-  setTeam: (team: TeamColorEnum) => void;
 }
 
 export const usePeerStore = create<PeerStore>()(immer((set) => {
@@ -24,12 +21,6 @@ export const usePeerStore = create<PeerStore>()(immer((set) => {
 
   return {
     room: room,
-    selfId: selfId,
-    team: TeamColorEnum.BLUE,
-    setTeam: (team: TeamColorEnum) => {
-      set(state => {
-        state.team = team;
-      });
-    }
+    selfId: selfId
   };
 }));

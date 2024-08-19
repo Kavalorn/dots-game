@@ -27,4 +27,8 @@ const GridCell: React.FC<GridCellProps> = ({ occupation, onOccupationChange }) =
     );
 };
 
-export default React.memo(GridCell, (prevProps, nextProps) => prevProps.occupation === nextProps.occupation);
+const MemoizedGridCell = React.memo(GridCell, (prevProps, nextProps) => prevProps.occupation === nextProps.occupation);
+
+export {
+    MemoizedGridCell as GridCell
+}
