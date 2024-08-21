@@ -4,7 +4,6 @@ import { GridCell } from "~entities/Grid/store";
 import { usePeer } from "~entities/Peer"
 import _ from 'lodash';
 import useGameStore, { GameStatusEnum } from "../store";
-import { useRTCGameStatus } from "./useRTCGameStatus";
 import { useStatus } from "./useGameStatus";
 
 export const useGame = () => {

@@ -1,6 +1,4 @@
 import React from 'react';
-import { useGame } from '~features/Game';
-import { getTeamColor } from '~shared/functions';
 import { TeamColorEnum } from '~shared/types';
 
 interface CursorProps {

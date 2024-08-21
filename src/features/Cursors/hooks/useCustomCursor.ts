@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { getCursorUrl, getTeamColorById } from '../ui';
 import { useGame } from '~features/Game';
 import { selfId } from 'trystero/torrent';
+import useGameStore from '~features/Game/store';
 
 const useCustomCursor = () => {
-  const {players} = useGame();
+  const players = useGameStore(state => state.players);
   const [cursorUrl, setCursorUrl] = useState<string>('');
 
   useEffect(() => {
